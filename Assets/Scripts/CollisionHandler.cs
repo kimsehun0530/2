@@ -12,11 +12,7 @@ public class CollisionHandler : MonoBehaviour
                 break;
 
              case "Finish":
-                Debug.Log("도착");
-                break;
-
-             case "F":
-                Debug.Log("연료를 얻었다!");
+                LoadNextLevel();
                 break;
             default:
                 ReloadLevel();
@@ -24,8 +20,15 @@ public class CollisionHandler : MonoBehaviour
         }
     }
 
+    void LoadNextLevel()
+    {
+       int currenSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currenSceneIndex+1);
+    }
+
     void ReloadLevel()
     {
-        SceneManager.LoadScene(0);
+        int currenSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currenSceneIndex);
     }
 }
